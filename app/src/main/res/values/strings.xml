@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ShoppingList</string>
+    <string name="floating_action_button_add_new_shop_item">Add new shop item</string>
 </resources>
