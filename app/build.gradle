@@ -17,6 +17,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -57,7 +61,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //To work with inject dependencies (Dagger)
-    def daggerVer = 2.42 // or latest version
+    def daggerVer = 2.43 // or latest version
 
     implementation "com.google.dagger:dagger:$daggerVer"
     implementation "com.google.dagger:dagger-android-support:$daggerVer"
