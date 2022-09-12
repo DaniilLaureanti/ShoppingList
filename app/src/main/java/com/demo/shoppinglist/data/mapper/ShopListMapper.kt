@@ -1,5 +1,6 @@
-package com.demo.shoppinglist.data
+package com.demo.shoppinglist.data.mapper
 
+import com.demo.shoppinglist.data.database.ShopItemDbModel
 import com.demo.shoppinglist.domain.ShopItem
 import javax.inject.Inject
 

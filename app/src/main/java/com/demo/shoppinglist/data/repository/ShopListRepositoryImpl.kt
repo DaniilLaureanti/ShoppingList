@@ -1,7 +1,9 @@
-package com.demo.shoppinglist.data
+package com.demo.shoppinglist.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
+import com.demo.shoppinglist.data.database.ShopListDao
+import com.demo.shoppinglist.data.mapper.ShopListMapper
 import com.demo.shoppinglist.domain.ShopItem
 import com.demo.shoppinglist.domain.ShopListRepository
 import javax.inject.Inject
