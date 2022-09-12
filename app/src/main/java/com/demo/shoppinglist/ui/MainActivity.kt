@@ -1,5 +1,6 @@
-package com.demo.shoppinglist.presentation
+package com.demo.shoppinglist.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import com.demo.shoppinglist.R
 import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.databinding.ActivityMainBinding
 import javax.inject.Inject
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
 

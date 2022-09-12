@@ -1,11 +1,10 @@
-package com.demo.shoppinglist.presentation
+package com.demo.shoppinglist.ui
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.demo.shoppinglist.R
-import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.domain.ShopItem
 
 class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {

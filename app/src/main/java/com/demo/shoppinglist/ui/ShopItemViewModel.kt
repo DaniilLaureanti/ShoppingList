@@ -1,4 +1,4 @@
-package com.demo.shoppinglist.presentation
+package com.demo.shoppinglist.ui
 
 import androidx.lifecycle.*
 import com.demo.shoppinglist.domain.AddShopItemUseCase

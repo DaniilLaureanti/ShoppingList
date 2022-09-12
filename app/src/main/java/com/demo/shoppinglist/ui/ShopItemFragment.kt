@@ -1,6 +1,8 @@
-package com.demo.shoppinglist.presentation
+package com.demo.shoppinglist.ui
 
+import android.content.ContentValues
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher

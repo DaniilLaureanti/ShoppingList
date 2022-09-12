@@ -1,9 +1,9 @@
 package com.demo.shoppinglist.di
 
 import android.app.Application
-import com.demo.shoppinglist.presentation.MainActivity
-import com.demo.shoppinglist.presentation.ShopItemActivity
-import com.demo.shoppinglist.presentation.ShopItemFragment
+import com.demo.shoppinglist.data.provider.ShopItemProvider
+import com.demo.shoppinglist.ui.MainActivity
+import com.demo.shoppinglist.ui.ShopItemFragment
 import dagger.BindsInstance
 import dagger.Component
 
@@ -14,6 +14,8 @@ interface ApplicationComponent {
     fun inject(mainActivity: MainActivity)
 
     fun inject(shopItemFragment: ShopItemFragment)
+
+    fun inject(shopItemProvider: ShopItemProvider)
 
     @Component.Factory
     interface Factory{

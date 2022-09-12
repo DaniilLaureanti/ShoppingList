@@ -1,9 +1,9 @@
 package com.demo.shoppinglist.di
 
 import android.app.Application
-import com.demo.shoppinglist.data.AppDataBase
-import com.demo.shoppinglist.data.ShopListDao
-import com.demo.shoppinglist.data.ShopListRepositoryImpl
+import com.demo.shoppinglist.data.database.AppDataBase
+import com.demo.shoppinglist.data.database.ShopListDao
+import com.demo.shoppinglist.data.repository.ShopListRepositoryImpl
 import com.demo.shoppinglist.domain.ShopListRepository
 import dagger.Binds
 import dagger.Module
@@ -20,7 +20,7 @@ interface DataModule {
 
         @Provides
         @ApplicationScope
-        fun provideShopListDao(application: Application): ShopListDao{
+        fun provideShopListDao(application: Application): ShopListDao {
             return AppDataBase.getInstance(application).shopListDao()
         }
     }
