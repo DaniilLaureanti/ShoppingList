@@ -5,7 +5,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_screensaver"
         tools:context=".ui.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -25,8 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            app:backgroundTint="@color/pink"
-            app:tint="@color/white"
+            app:backgroundTint="@color/primaryColor"
+            app:tint="@color/primaryTextColor"
             android:clickable="true"
             android:contentDescription="@string/floating_action_button_add_new_shop_item"
             android:focusable="true"
