@@ -4,11 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_add_shopping.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/ic_baseline_playlist_add_24.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.175" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.22552083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_shop_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_add_first_purchase.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_first_purchase.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_shop_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_shop_disabled.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_shop_enabled.xml" value="0.25" />
