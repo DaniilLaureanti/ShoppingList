@@ -1,7 +1,7 @@
 package com.demo.shoppinglist.ui
 
-import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -12,7 +12,6 @@ import com.demo.shoppinglist.R
 import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.databinding.ActivityMainBinding
 import javax.inject.Inject
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
 
@@ -35,10 +34,15 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         setContentView(binding.root)
 
         setUpRecyclerView()
+
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         viewModel.shopList.observe(this) {
+
             shopListAdapter.submitList(it)
+
+            ifListIsEmptyAddNotification(it.isEmpty())
         }
+
         binding.buttonAddShopItem.setOnClickListener {
             if (isOnePaneMode()) {
                 val intent = ShopItemActivity.newIntentAddItem(this)
@@ -100,6 +104,16 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
 
         val itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(rwShopList)
+    }
+
+    private fun ifListIsEmptyAddNotification(value: Boolean) {
+        if (value) {
+            binding.tvAddFirstPurchase?.visibility = View.VISIBLE
+            binding.tvListMissing?.visibility = View.VISIBLE
+        } else{
+            binding.tvAddFirstPurchase?.visibility = View.INVISIBLE
+            binding.tvListMissing?.visibility = View.INVISIBLE
+        }
     }
 
     private fun setupClickListener() {

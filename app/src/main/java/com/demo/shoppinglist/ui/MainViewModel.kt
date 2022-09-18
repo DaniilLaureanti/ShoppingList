@@ -2,10 +2,7 @@ package com.demo.shoppinglist.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.demo.shoppinglist.domain.DeleteShopItemUseCase
-import com.demo.shoppinglist.domain.EditShopItemUseCase
-import com.demo.shoppinglist.domain.GetShopListUseCase
-import com.demo.shoppinglist.domain.ShopItem
+import com.demo.shoppinglist.domain.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
