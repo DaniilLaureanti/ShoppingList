@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">ShoppingList</string>
+    <string name="app_name">Shopping List</string>
     <string name="floating_action_button_add_new_shop_item">Add new shop item</string>
     <string name="name_hint">Name:</string>
     <string name="count_hint">Count:</string>
     <string name="btn_save">Save</string>
+    <string name="tv_list_missing">The list is missing</string>
+    <string name="tv_add_first_purchase">Tap the Add button to create an item.</string>
+    <string name="tv_info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
     <string name="error_input_name">Invalid name</string>
     <string name="error_input_count">Invalid count</string>
 </resources>
