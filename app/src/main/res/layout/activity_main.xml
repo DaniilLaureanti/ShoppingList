@@ -8,6 +8,10 @@
         android:layout_height="match_parent"
         tools:context=".ui.MainActivity">
 
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rw_shop_list"
             android:layout_width="0dp"

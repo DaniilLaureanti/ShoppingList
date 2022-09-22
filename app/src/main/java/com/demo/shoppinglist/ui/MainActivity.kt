@@ -1,5 +1,8 @@
 package com.demo.shoppinglist.ui
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -110,7 +113,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         if (value) {
             binding.tvAddFirstPurchase?.visibility = View.VISIBLE
             binding.tvListMissing?.visibility = View.VISIBLE
-        } else{
+        } else {
             binding.tvAddFirstPurchase?.visibility = View.INVISIBLE
             binding.tvListMissing?.visibility = View.INVISIBLE
         }
@@ -138,4 +141,12 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
         supportFragmentManager.popBackStack()
     }
+
+    companion object {
+
+        fun newInstanceMainActivity(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
+        }
+    }
+
 }
