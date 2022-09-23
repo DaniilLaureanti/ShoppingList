@@ -2,10 +2,10 @@ package com.demo.shoppinglist.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.demo.shoppinglist.ShoppingListApp
@@ -62,10 +62,19 @@ class WelcomeFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         observeViewModel()
 
+        showInfo()
+
         binding.buttonAccept.setOnClickListener {
             launchMainActivity()
             finishWelcomeActivity()
         }
+    }
+
+    private fun showInfo() {
+        val webView = binding.webViewInfo
+        webView.webViewClient = WebViewClient()
+        webView.loadUrl(WELCOME_INFO)
+        webView.settings.setSupportZoom(true)
     }
 
     private fun finishWelcomeActivity() {
@@ -82,15 +91,13 @@ class WelcomeFragment : Fragment() {
         _binding = null
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     interface OnAcceptListener {
         fun OnAccept()
     }
 
     companion object {
+        const val WELCOME_INFO = "file:///android_asset/info.html"
+
         fun newInstanceWelcomeFragment(): WelcomeFragment {
             return WelcomeFragment()
         }
