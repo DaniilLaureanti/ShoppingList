@@ -14,6 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.demo.shoppinglist.R
 import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.databinding.ActivityMainBinding
+import com.demo.shoppinglist.ui.ads.AdsManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
@@ -29,12 +34,13 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         (application as ShoppingListApp).component
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.adView?.let { AdsManager.createAds(this, it) }
 
         setUpRecyclerView()
 
@@ -111,11 +117,11 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
 
     private fun ifListIsEmptyAddNotification(value: Boolean) {
         if (value) {
-            binding.tvAddFirstPurchase?.visibility = View.VISIBLE
-            binding.tvListMissing?.visibility = View.VISIBLE
+            binding.tvAddFirstPurchase.visibility = View.VISIBLE
+            binding.tvListMissing.visibility = View.VISIBLE
         } else {
-            binding.tvAddFirstPurchase?.visibility = View.INVISIBLE
-            binding.tvListMissing?.visibility = View.INVISIBLE
+            binding.tvAddFirstPurchase.visibility = View.INVISIBLE
+            binding.tvListMissing.visibility = View.INVISIBLE
         }
     }
 
@@ -143,7 +149,6 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
     }
 
     companion object {
-
         fun newInstanceMainActivity(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
         }

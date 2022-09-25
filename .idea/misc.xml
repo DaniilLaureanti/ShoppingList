@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/layout/fragment_welcome.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/item_shop_disabled.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_shop_enabled.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_template_small.xml" value="0.19610507246376813" />
       </map>
     </option>
   </component>
