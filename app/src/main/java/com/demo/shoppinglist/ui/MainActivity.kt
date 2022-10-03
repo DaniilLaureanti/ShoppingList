@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         viewModel.shopList.observe(this) {
 
-            shopListAdapter.submitList(it)
+            shopListAdapter.shopList = it
 
             ifListIsEmptyAddNotification(it.isEmpty())
         }
@@ -100,8 +100,9 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val item = shopListAdapter.currentList[viewHolder.adapterPosition]
+                val item = shopListAdapter.shopList[viewHolder.adapterPosition]
                 viewModel.deleteShopItem(item)
+                shopListAdapter.notifyItemRemoved(viewHolder.adapterPosition)
             }
         }
 
@@ -111,11 +112,11 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
 
     private fun ifListIsEmptyAddNotification(value: Boolean) {
         if (value) {
-            binding.tvAddFirstPurchase?.visibility = View.VISIBLE
-            binding.tvListMissing?.visibility = View.VISIBLE
+            binding.tvAddFirstPurchase.visibility = View.VISIBLE
+            binding.tvListMissing.visibility = View.VISIBLE
         } else {
-            binding.tvAddFirstPurchase?.visibility = View.INVISIBLE
-            binding.tvListMissing?.visibility = View.INVISIBLE
+            binding.tvAddFirstPurchase.visibility = View.INVISIBLE
+            binding.tvListMissing.visibility = View.INVISIBLE
         }
     }
 
@@ -132,7 +133,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
     }
 
     private fun setupLongClickListener() {
-        shopListAdapter.onShopItemOnLongClickListener = {
+        shopListAdapter.onShopItemLongClickListener = {
             viewModel.changeEnableState(it)
         }
     }
