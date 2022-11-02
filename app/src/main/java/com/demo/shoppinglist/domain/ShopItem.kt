@@ -1,12 +1,21 @@
 package com.demo.shoppinglist.domain
 
+val TYPE_SHOP_ITEM = 0
+val TYPE_AD = 1
+
+open class ListItem(val type: Int)
+
 data class ShopItem(
     val name: String,
     val count: Int,
     val enabled: Boolean,
     var id: Int = UNDEFINED_ID
-){
-    companion object{
+) : ListItem(TYPE_SHOP_ITEM) {
+
+    companion object {
         const val UNDEFINED_ID = 0
     }
+
 }
+
+class BannerAd : ListItem(TYPE_AD)

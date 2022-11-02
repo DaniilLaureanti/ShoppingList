@@ -2,7 +2,6 @@ package com.demo.shoppinglist.ui
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -14,7 +13,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.demo.shoppinglist.R
 import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.databinding.ActivityMainBinding
+import com.demo.shoppinglist.domain.BannerAd
+import com.demo.shoppinglist.domain.ListItem
+import com.demo.shoppinglist.domain.ShopItem
 import javax.inject.Inject
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
 
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         viewModel.shopList.observe(this) {
 
-            shopListAdapter.shopList = it
+            shopListAdapter.shopList = mixData(it)
 
             ifListIsEmptyAddNotification(it.isEmpty())
         }
@@ -55,6 +58,23 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
             }
         }
     }
+
+    //====================================================================
+
+    private fun mixData(listShopItem: List<ShopItem>): List<ListItem>{
+        var count = 0
+        val listItem = mutableListOf<ListItem>()
+        for (shopItem in listShopItem) {
+            count++
+            if (count % 3 == 0) {
+                listItem.add(BannerAd())
+            }
+            listItem.add(shopItem)
+        }
+        return listItem
+    }
+
+    //======================================================================
 
     private fun isOnePaneMode(): Boolean {
         return binding.shopItemContainer == null
@@ -101,8 +121,10 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val item = shopListAdapter.shopList[viewHolder.adapterPosition]
-                viewModel.deleteShopItem(item)
-                shopListAdapter.notifyItemRemoved(viewHolder.adapterPosition)
+                if (item is ShopItem){
+                    viewModel.deleteShopItem(item)
+                    shopListAdapter.notifyItemRemoved(viewHolder.adapterPosition)
+                }
             }
         }
 

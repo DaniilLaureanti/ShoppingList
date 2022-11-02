@@ -44,7 +44,7 @@ dependencies {
     // Support libraries
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Kotlin coroutines
@@ -66,6 +66,9 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$daggerVer"
     kapt "com.google.dagger:dagger-android-processor:$daggerVer"
     kapt "com.google.dagger:dagger-compiler:$daggerVer"
+
+    //AdMob
+    implementation'com.google.android.gms:play-services-ads:21.3.0'
 
 //    //Hilt
 //    implementation "com.google.dagger:hilt-android:2.43.2"
@@ -99,7 +102,7 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-core:4.7.0"
     androidTestImplementation 'com.google.dagger:hilt-android-testing:2.43.2'
     kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.43.2'
-    debugImplementation "androidx.fragment:fragment-testing:1.6.0-alpha02"
+    debugImplementation "androidx.fragment:fragment-testing:1.6.0-alpha03"
 
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0") {
         exclude group : "org.checkerframework", module : "checker"
