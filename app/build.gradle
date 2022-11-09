@@ -27,7 +27,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    buildFeatures{
+
+    flavorDimensions.add("pricing")
+
+    productFlavors {
+        free {
+            dimension = "pricing"
+            applicationId "com.demo.shoppinglist.free"
+            resValue "string", "shop_item_provider_key", "com.demo.shoppinglist.app.free"
+        }
+        paid {
+            dimension = "pricing"
+            applicationId "com.demo.shoppinglist.paid"
+            resValue "string", "shop_item_provider_key", "com.demo.shoppinglist.app.paid"
+        }
+    }
+
+    buildFeatures {
         dataBinding true
     }
     compileOptions {
@@ -68,7 +84,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$daggerVer"
 
     //AdMob
-    implementation'com.google.android.gms:play-services-ads:21.3.0'
+    implementation 'com.google.android.gms:play-services-ads:21.3.0'
 
 //    //Hilt
 //    implementation "com.google.dagger:hilt-android:2.43.2"
@@ -105,6 +121,6 @@ dependencies {
     debugImplementation "androidx.fragment:fragment-testing:1.6.0-alpha03"
 
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0") {
-        exclude group : "org.checkerframework", module : "checker"
+        exclude group: "org.checkerframework", module: "checker"
     }
 }

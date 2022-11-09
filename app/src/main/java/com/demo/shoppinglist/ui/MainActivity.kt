@@ -10,14 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.demo.shoppinglist.BuildConfig
 import com.demo.shoppinglist.R
 import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.databinding.ActivityMainBinding
-import com.demo.shoppinglist.domain.BannerAd
-import com.demo.shoppinglist.domain.ListItem
 import com.demo.shoppinglist.domain.ShopItem
 import javax.inject.Inject
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
 
@@ -42,12 +40,8 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         setUpRecyclerView()
 
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        viewModel.shopList.observe(this) {
 
-            shopListAdapter.shopList = mixData(it)
-
-            ifListIsEmptyAddNotification(it.isEmpty())
-        }
+        checkingPaidVersion()
 
         binding.buttonAddShopItem.setOnClickListener {
             if (isOnePaneMode()) {
@@ -59,22 +53,19 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         }
     }
 
-    //====================================================================
-
-    private fun mixData(listShopItem: List<ShopItem>): List<ListItem>{
-        var count = 0
-        val listItem = mutableListOf<ListItem>()
-        for (shopItem in listShopItem) {
-            count++
-            if (count % 3 == 0) {
-                listItem.add(BannerAd())
+    private fun checkingPaidVersion() {
+        if (BuildConfig.FLAVOR == FREE_VERSION) {
+            viewModel.shopListWidthAds.observe(this) {
+                shopListAdapter.itemList = it
+                ifListIsEmptyAddNotification(it.isEmpty())
             }
-            listItem.add(shopItem)
+        } else {
+            viewModel.shopList.observe(this) {
+                shopListAdapter.itemList = it
+                ifListIsEmptyAddNotification(it.isEmpty())
+            }
         }
-        return listItem
     }
-
-    //======================================================================
 
     private fun isOnePaneMode(): Boolean {
         return binding.shopItemContainer == null
@@ -120,8 +111,8 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val item = shopListAdapter.shopList[viewHolder.adapterPosition]
-                if (item is ShopItem){
+                val item = shopListAdapter.itemList[viewHolder.adapterPosition]
+                if (item is ShopItem) {
                     viewModel.deleteShopItem(item)
                     shopListAdapter.notifyItemRemoved(viewHolder.adapterPosition)
                 }
@@ -166,6 +157,8 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
     }
 
     companion object {
+
+        const val FREE_VERSION = "free"
 
         fun newInstanceMainActivity(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
