@@ -1,7 +1,7 @@
 package com.demo.shoppinglist.domain
 
-val TYPE_SHOP_ITEM = 0
-val TYPE_AD = 1
+const val TYPE_SHOP_ITEM = 0
+const val TYPE_AD = 1
 
 open class ListItem(val type: Int)
 

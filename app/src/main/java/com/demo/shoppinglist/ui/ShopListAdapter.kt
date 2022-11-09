@@ -15,7 +15,7 @@ import com.google.android.gms.ads.AdView
 
 class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemListViewHolder>() {
 
-    var shopList = listOf<ListItem>()
+    var itemList = listOf<ListItem>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -47,7 +47,7 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemListViewHolder>
     }
 
     override fun onBindViewHolder(viewHolder: ItemListViewHolder, position: Int) {
-        val itemType = shopList[position]
+        val itemType = itemList[position]
 
         if (itemType is ShopItem) {
             if (viewHolder is ShopItemViewHolder) {
@@ -74,15 +74,14 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemListViewHolder>
     }
 
     override fun getItemCount(): Int {
-        return shopList.size
+        return itemList.size
     }
 
     override fun getItemViewType(position: Int): Int {
-        val itemType = shopList[position].type
 
-        val viewType = when (itemType) {
+        val viewType = when (itemList[position].type) {
             TYPE_SHOP_ITEM -> {
-                val shopItem = shopList[position]
+                val shopItem = itemList[position]
                 if (shopItem is ShopItem) {
                     return if (shopItem.enabled) {
                         VIEW_TYPE_ENABLED
@@ -102,8 +101,8 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemListViewHolder>
     }
 
     class ShopItemViewHolder(val view: View) : ItemListViewHolder(view) {
-        val tvName = view.findViewById<TextView>(R.id.tv_name)
-        val tvCount = view.findViewById<TextView>(R.id.tv_count)
+        val tvName: TextView = view.findViewById(R.id.tv_name)
+        val tvCount: TextView = view.findViewById(R.id.tv_count)
 
         override fun bind(item: ListItem) {
 
@@ -113,7 +112,7 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemListViewHolder>
 
     class AdViewHolder(view: View) : ItemListViewHolder(view) {
 
-        var adView = view.findViewById<AdView>(R.id.adView)
+        var adView: AdView = view.findViewById(R.id.adView)
 
         override fun bind(item: ListItem) {
             val adRequest = AdRequest.Builder().build()

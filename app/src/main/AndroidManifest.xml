@@ -35,7 +35,7 @@
 
         <provider
             android:name=".data.provider.ShopItemProvider"
-            android:authorities="com.demo.shoppinglist"
+            android:authorities="@string/shop_item_provider_key"
             android:exported="true" />
     </application>
 
