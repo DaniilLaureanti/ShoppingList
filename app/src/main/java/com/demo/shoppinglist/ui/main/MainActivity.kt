@@ -1,4 +1,4 @@
-package com.demo.shoppinglist.ui
+package com.demo.shoppinglist.ui.main
 
 import android.content.Context
 import android.content.Intent
@@ -15,6 +15,11 @@ import com.demo.shoppinglist.R
 import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.databinding.ActivityMainBinding
 import com.demo.shoppinglist.domain.ShopItem
+import com.demo.shoppinglist.ui.shopitem.ShopItemActivity
+import com.demo.shoppinglist.ui.shopitem.ShopItemFragment
+import com.demo.shoppinglist.ui.shopitem.ShopListAda
+import com.demo.shoppinglist.ui.shopitem.ShopListAdapter
+import com.demo.shoppinglist.ui.viewmodelfactory.ViewModelFactory
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
@@ -56,12 +61,12 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
     private fun checkingPaidVersion() {
         if (BuildConfig.FLAVOR == FREE_VERSION) {
             viewModel.shopListWidthAds.observe(this) {
-                shopListAdapter.itemList = it
+                shopListAdapter.submitList(it)
                 ifListIsEmptyAddNotification(it.isEmpty())
             }
         } else {
             viewModel.shopList.observe(this) {
-                shopListAdapter.itemList = it
+                shopListAdapter.submitList(it)
                 ifListIsEmptyAddNotification(it.isEmpty())
             }
         }
@@ -84,12 +89,12 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
             shopListAdapter = ShopListAdapter()
             adapter = shopListAdapter
             recycledViewPool.setMaxRecycledViews(
-                ShopListAdapter.VIEW_TYPE_ENABLED,
-                ShopListAdapter.MAX_POOL_SIZE
+                ShopListAda.VIEW_TYPE_ENABLED,
+                ShopListAda.MAX_POOL_SIZE
             )
             recycledViewPool.setMaxRecycledViews(
-                ShopListAdapter.VIEW_TYPE_DISABLED,
-                ShopListAdapter.MAX_POOL_SIZE
+                ShopListAda.VIEW_TYPE_DISABLED,
+                ShopListAda.MAX_POOL_SIZE
             )
         }
         setupLongClickListener()
@@ -111,7 +116,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val item = shopListAdapter.itemList[viewHolder.adapterPosition]
+                val item = shopListAdapter.currentList[viewHolder.adapterPosition]
                 if (item is ShopItem) {
                     viewModel.deleteShopItem(item)
                     shopListAdapter.notifyItemRemoved(viewHolder.adapterPosition)

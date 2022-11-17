@@ -1,4 +1,4 @@
-package com.demo.shoppinglist.ui
+package com.demo.shoppinglist.ui.shopitem
 
 import android.content.Context
 import android.content.Intent

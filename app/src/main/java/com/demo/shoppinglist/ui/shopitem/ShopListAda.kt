@@ -1,4 +1,4 @@
-package com.demo.shoppinglist.ui
+package com.demo.shoppinglist.ui.shopitem
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +13,7 @@ import com.demo.shoppinglist.domain.TYPE_SHOP_ITEM
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 
-class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemListViewHolder>() {
+class ShopListAda : RecyclerView.Adapter<ShopListAda.ItemListViewHolder>() {
 
     var itemList = listOf<ListItem>()
         set(value) {
@@ -39,7 +39,7 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ItemListViewHolder>
             }
             VIEW_TYPE_AD -> {
                 val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.ad_row_layout, parent, false)
+                    .inflate(R.layout.item_banner_ad, parent, false)
                 return AdViewHolder(view)
             }
             else -> throw RuntimeException("Unknown view type: $viewType")

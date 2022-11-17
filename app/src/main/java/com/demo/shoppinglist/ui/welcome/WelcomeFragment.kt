@@ -1,4 +1,4 @@
-package com.demo.shoppinglist.ui
+package com.demo.shoppinglist.ui.welcome
 
 import android.content.Context
 import android.os.Bundle
@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.databinding.FragmentWelcomeBinding
+import com.demo.shoppinglist.ui.viewmodelfactory.ViewModelFactory
+import com.demo.shoppinglist.ui.main.MainActivity
 import javax.inject.Inject
 
 

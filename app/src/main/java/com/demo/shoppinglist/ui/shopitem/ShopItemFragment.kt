@@ -1,4 +1,4 @@
-package com.demo.shoppinglist.ui
+package com.demo.shoppinglist.ui.shopitem
 
 import android.content.Context
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.databinding.FragmentShopItemBinding
 import com.demo.shoppinglist.domain.ShopItem
+import com.demo.shoppinglist.ui.viewmodelfactory.ViewModelFactory
 import javax.inject.Inject
 
 class ShopItemFragment : Fragment() {

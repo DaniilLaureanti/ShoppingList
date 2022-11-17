@@ -2,9 +2,9 @@ package com.demo.shoppinglist.di
 
 import android.app.Application
 import com.demo.shoppinglist.data.provider.ShopItemProvider
-import com.demo.shoppinglist.ui.MainActivity
-import com.demo.shoppinglist.ui.ShopItemFragment
-import com.demo.shoppinglist.ui.WelcomeFragment
+import com.demo.shoppinglist.ui.main.MainActivity
+import com.demo.shoppinglist.ui.shopitem.ShopItemFragment
+import com.demo.shoppinglist.ui.welcome.WelcomeFragment
 import dagger.BindsInstance
 import dagger.Component
 

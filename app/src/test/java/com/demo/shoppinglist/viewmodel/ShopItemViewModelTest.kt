@@ -6,7 +6,7 @@ import com.demo.shoppinglist.domain.AddShopItemUseCase
 import com.demo.shoppinglist.domain.EditShopItemUseCase
 import com.demo.shoppinglist.domain.GetShopItemUseCase
 import com.demo.shoppinglist.getOrAwaitValueTest
-import com.demo.shoppinglist.ui.ShopItemViewModel
+import com.demo.shoppinglist.ui.shopitem.ShopItemViewModel
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
