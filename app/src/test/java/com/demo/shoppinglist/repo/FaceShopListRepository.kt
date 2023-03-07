@@ -2,13 +2,15 @@ package com.demo.shoppinglist.repo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.demo.shoppinglist.domain.ListItem
 import com.demo.shoppinglist.domain.ShopItem
 import com.demo.shoppinglist.domain.ShopListRepository
 
-class FaceShopListRepository: ShopListRepository {
+class FaceShopListRepository : ShopListRepository {
 
     private val shopItems = mutableListOf<ShopItem>()
-    private val shotItemsLiveData = MutableLiveData<List<ShopItem>>(shopItems)
+    private val shopItemsLiveData = MutableLiveData<List<ShopItem>>(shopItems)
+    private val _shopItemsLiveData: LiveData<List<ShopItem>> = shopItemsLiveData
 
 
     override suspend fun addShopItem(shopItem: ShopItem) {
@@ -22,7 +24,6 @@ class FaceShopListRepository: ShopListRepository {
     }
 
     override suspend fun editShopItem(shopItem: ShopItem) {
-        //
         refreshData()
     }
 
@@ -31,10 +32,14 @@ class FaceShopListRepository: ShopListRepository {
     }
 
     override fun getShopList(): LiveData<List<ShopItem>> {
-        return shotItemsLiveData
+        return shopItemsLiveData
     }
 
-    private fun refreshData(){
-        shotItemsLiveData.postValue(shopItems)
+    override fun getShopListWidthAds(): LiveData<List<ListItem>> {
+        TODO()
+    }
+
+    private fun refreshData() {
+        shopItemsLiveData.postValue(shopItems)
     }
 }

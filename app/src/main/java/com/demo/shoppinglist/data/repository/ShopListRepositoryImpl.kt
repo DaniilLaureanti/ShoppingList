@@ -1,7 +1,6 @@
 package com.demo.shoppinglist.data.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
 import com.demo.shoppinglist.data.database.ShopListDao
 import com.demo.shoppinglist.data.mapper.ShopListMapper
@@ -41,4 +40,5 @@ class ShopListRepositoryImpl @Inject constructor(
         .map(shopListDao.getShopList()){
             mapper.mapListDbModelToListEntityWidthAds(it)
         }
+
 }

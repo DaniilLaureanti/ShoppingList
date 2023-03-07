@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Debug
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.demo.shoppinglist.R
 import com.demo.shoppinglist.ui.main.MainActivity
@@ -31,6 +33,7 @@ class WelcomeActivity : AppCompatActivity(), WelcomeFragment.OnAcceptListener {
     }
 
     private fun hasVisited(sharedPreferences: SharedPreferences) {
+        Log.d("TEST_WELCOME", "+++++++++++++++++")
         val hasVisited = sharedPreferences.getBoolean(HAS_VISITED, false)
 
         if (!hasVisited) {
