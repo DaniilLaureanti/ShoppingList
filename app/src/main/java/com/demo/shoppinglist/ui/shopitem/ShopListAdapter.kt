@@ -8,13 +8,15 @@ import androidx.recyclerview.widget.ListAdapter
 import com.demo.shoppinglist.R
 import com.demo.shoppinglist.databinding.ItemShopDisabledBinding
 import com.demo.shoppinglist.databinding.ItemShopEnabledBinding
-import com.demo.shoppinglist.domain.ListItem
-import com.demo.shoppinglist.domain.ShopItem
-import com.demo.shoppinglist.domain.TYPE_AD
-import com.demo.shoppinglist.domain.TYPE_SHOP_ITEM
-import com.demo.shoppinglist.ui.AdItemViewHolder
+import com.demo.shoppinglist.domain.*
+import com.demo.shoppinglist.ui.AdViewHolder
 import com.demo.shoppinglist.ui.shopitem.viewHolder.ItemListViewHolder
 import com.demo.shoppinglist.ui.shopitem.viewHolder.ShopItemViewHolder
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
+
 
 class ShopListAdapter : ListAdapter<ListItem, ItemListViewHolder>(ShopItemDiffCallback()) {
 
@@ -43,7 +45,7 @@ class ShopListAdapter : ListAdapter<ListItem, ItemListViewHolder>(ShopItemDiffCa
                 )
                 return ShopItemViewHolder(binding)
             }
-            ShopListAda.VIEW_TYPE_AD -> {
+            VIEW_TYPE_AD -> {
                 val layout = R.layout.item_banner_ad
                 val binding = DataBindingUtil.inflate<ViewDataBinding>(
                     LayoutInflater.from(parent.context),
@@ -51,7 +53,7 @@ class ShopListAdapter : ListAdapter<ListItem, ItemListViewHolder>(ShopItemDiffCa
                     parent,
                     false
                 )
-                return AdItemViewHolder(binding)
+                return AdViewHolder(binding)
             }
             else -> throw RuntimeException("Unknown view type: $viewType")
         }
@@ -76,6 +78,46 @@ class ShopListAdapter : ListAdapter<ListItem, ItemListViewHolder>(ShopItemDiffCa
                 is ItemShopEnabledBinding -> {
                     binding.shopItem = item
                 }
+            }
+        } else if (item is BannerAd){
+            createAd(binding)
+        }
+    }
+
+    private fun createAd(binding: ViewDataBinding) {
+
+        val adView: AdView = binding.root.findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+        adView.adListener = object : AdListener() {
+            override fun onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                println(adError)
+                // Code to be executed when an ad request fails.
+            }
+
+            override fun onAdImpression() {
+                // Code to be executed when an impression is recorded
+                // for an ad.
+            }
+
+            override fun onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+                println("load")
+            }
+
+            override fun onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
             }
         }
     }

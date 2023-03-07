@@ -17,9 +17,13 @@ import com.demo.shoppinglist.databinding.ActivityMainBinding
 import com.demo.shoppinglist.domain.ShopItem
 import com.demo.shoppinglist.ui.shopitem.ShopItemActivity
 import com.demo.shoppinglist.ui.shopitem.ShopItemFragment
-import com.demo.shoppinglist.ui.shopitem.ShopListAda
 import com.demo.shoppinglist.ui.shopitem.ShopListAdapter
+import com.demo.shoppinglist.ui.shopitem.ShopListAdapter.Companion.MAX_POOL_SIZE
+import com.demo.shoppinglist.ui.shopitem.ShopListAdapter.Companion.VIEW_TYPE_DISABLED
+import com.demo.shoppinglist.ui.shopitem.ShopListAdapter.Companion.VIEW_TYPE_ENABLED
 import com.demo.shoppinglist.ui.viewmodelfactory.ViewModelFactory
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
@@ -34,7 +38,6 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
     private val component by lazy {
         (application as ShoppingListApp).component
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
@@ -89,12 +92,12 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
             shopListAdapter = ShopListAdapter()
             adapter = shopListAdapter
             recycledViewPool.setMaxRecycledViews(
-                ShopListAda.VIEW_TYPE_ENABLED,
-                ShopListAda.MAX_POOL_SIZE
+                VIEW_TYPE_ENABLED,
+                MAX_POOL_SIZE
             )
             recycledViewPool.setMaxRecycledViews(
-                ShopListAda.VIEW_TYPE_DISABLED,
-                ShopListAda.MAX_POOL_SIZE
+                VIEW_TYPE_DISABLED,
+                MAX_POOL_SIZE
             )
         }
         setupLongClickListener()
