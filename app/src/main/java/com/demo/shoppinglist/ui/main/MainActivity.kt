@@ -15,6 +15,7 @@ import com.demo.shoppinglist.R
 import com.demo.shoppinglist.ShoppingListApp
 import com.demo.shoppinglist.databinding.ActivityMainBinding
 import com.demo.shoppinglist.domain.ShopItem
+import com.demo.shoppinglist.ui.AdViewHolder
 import com.demo.shoppinglist.ui.shopitem.ShopItemActivity
 import com.demo.shoppinglist.ui.shopitem.ShopItemFragment
 import com.demo.shoppinglist.ui.shopitem.ShopListAdapter
@@ -22,9 +23,8 @@ import com.demo.shoppinglist.ui.shopitem.ShopListAdapter.Companion.MAX_POOL_SIZE
 import com.demo.shoppinglist.ui.shopitem.ShopListAdapter.Companion.VIEW_TYPE_DISABLED
 import com.demo.shoppinglist.ui.shopitem.ShopListAdapter.Companion.VIEW_TYPE_ENABLED
 import com.demo.shoppinglist.ui.viewmodelfactory.ViewModelFactory
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
 import javax.inject.Inject
+
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
 
@@ -116,6 +116,11 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
                 target: RecyclerView.ViewHolder
             ): Boolean {
                 return false
+            }
+
+            override fun getSwipeDirs (recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+                if (viewHolder is AdViewHolder) return 0
+                return super.getSwipeDirs(recyclerView, viewHolder)
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
