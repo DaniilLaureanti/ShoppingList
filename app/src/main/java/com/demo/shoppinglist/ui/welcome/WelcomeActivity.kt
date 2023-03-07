@@ -1,15 +1,12 @@
-package com.demo.shoppinglist.ui
+package com.demo.shoppinglist.ui.welcome
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import com.demo.shoppinglist.R
+import com.demo.shoppinglist.ui.main.MainActivity
 
 class WelcomeActivity : AppCompatActivity(), WelcomeFragment.OnAcceptListener {
 

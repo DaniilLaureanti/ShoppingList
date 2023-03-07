@@ -1,9 +1,9 @@
 package com.demo.shoppinglist.di
 
 import androidx.lifecycle.ViewModel
-import com.demo.shoppinglist.ui.MainViewModel
-import com.demo.shoppinglist.ui.ShopItemViewModel
-import com.demo.shoppinglist.ui.WelcomeViewModel
+import com.demo.shoppinglist.ui.main.MainViewModel
+import com.demo.shoppinglist.ui.shopitem.ShopItemViewModel
+import com.demo.shoppinglist.ui.welcome.WelcomeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
