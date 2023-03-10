@@ -6,8 +6,8 @@ import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 import com.demo.shoppinglist.ShoppingListApp
-import com.demo.shoppinglist.data.mapper.ShopListMapper
 import com.demo.shoppinglist.data.database.ShopListDao
+import com.demo.shoppinglist.data.mapper.ShopListMapper
 import com.demo.shoppinglist.domain.ShopItem
 import javax.inject.Inject
 
