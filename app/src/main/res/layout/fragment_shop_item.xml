@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.demo.shoppinglist.ui.shopitem.ShopItemViewModel" />
+            type="com.laureanti.shoppinglist.ui.shopitem.ShopItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.shopitem.ShopItemFragment">
+        tools:context="com.laureanti.shoppinglist.ui.shopitem.ShopItemFragment">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_name"

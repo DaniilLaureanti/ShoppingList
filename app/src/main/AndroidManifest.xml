@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.demo.shoppinglist"
+    package="com.laureanti.shoppinglist"
     >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".ShoppingListApp"
+        android:name="com.laureanti.shoppinglist.ShoppingListApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,7 +22,7 @@
             />
 
         <activity
-            android:name=".ui.welcome.WelcomeActivity"
+            android:name="com.laureanti.shoppinglist.ui.welcome.WelcomeActivity"
             android:exported="true"
             >
             <intent-filter>
@@ -32,18 +32,18 @@
         </activity>
 
         <activity
-            android:name=".ui.shopitem.ShopItemActivity"
+            android:name="com.laureanti.shoppinglist.ui.shopitem.ShopItemActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"
             />
 
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.laureanti.shoppinglist.ui.main.MainActivity"
             android:exported="true"
             />
 
         <provider
-            android:name=".data.provider.ShopItemProvider"
+            android:name="com.laureanti.shoppinglist.data.provider.ShopItemProvider"
             android:authorities="@string/shop_item_provider_key"
             android:exported="true"
             />

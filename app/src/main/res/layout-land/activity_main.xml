@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.MainActivity">
+        tools:context="com.laureanti.shoppinglist.ui.main.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rw_shop_list"
