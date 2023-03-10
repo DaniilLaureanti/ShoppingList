@@ -2,9 +2,9 @@ package com.demo.shoppinglist.repo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.demo.shoppinglist.domain.ListItem
-import com.demo.shoppinglist.domain.ShopItem
-import com.demo.shoppinglist.domain.ShopListRepository
+import com.laureanti.shoppinglist.domain.ListItem
+import com.laureanti.shoppinglist.domain.ShopItem
+import com.laureanti.shoppinglist.domain.ShopListRepository
 
 class FaceShopListRepository : ShopListRepository {
 

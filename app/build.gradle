@@ -8,7 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.demo.shoppinglist"
+        applicationId "com.laureanti.shoppinglist"
         minSdk 23
         targetSdk 33
         versionCode 1
@@ -34,13 +34,13 @@ android {
     productFlavors {
         free {
             dimension = "pricing"
-            applicationId "com.demo.shoppinglist.free"
-            resValue "string", "shop_item_provider_key", "com.demo.shoppinglist.app.free"
+            applicationId "com.laureanti.shoppinglist.free"
+            resValue "string", "shop_item_provider_key", "com.laureanti.shoppinglist.app.free"
         }
         paid {
             dimension = "pricing"
-            applicationId "com.demo.shoppinglist.paid"
-            resValue "string", "shop_item_provider_key", "com.demo.shoppinglist.app.paid"
+            applicationId "com.laureanti.shoppinglist.paid"
+            resValue "string", "shop_item_provider_key", "com.laureanti.shoppinglist.app.paid"
         }
     }
 
