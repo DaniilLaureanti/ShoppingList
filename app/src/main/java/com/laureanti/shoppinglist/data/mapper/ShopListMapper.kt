@@ -27,15 +27,23 @@ class ShopListMapper @Inject constructor() {
 
     fun mapListDbModelToListEntityWidthAds(list: List<ShopItemDbModel>): List<ListItem> {
         val listEntity = mapListDbModelToListEntity(list)
-        var count = 0
+        var listItemCounter = INITIAL_VALUE_COUNTER
         val listItem = mutableListOf<ListItem>()
+
         for (shopItem in listEntity) {
-            count++
-            if (count % 3 == 0) {
+            listItemCounter++
+            if (listItemCounter == FIRST_ELEMENT || listItemCounter % ADS_EVERY_ELEMENTS == 0) {
                 listItem.add(BannerAd())
             }
             listItem.add(shopItem)
         }
         return listItem
     }
+
+    companion object {
+        private const val INITIAL_VALUE_COUNTER = 0
+        private const val FIRST_ELEMENT = 1
+        private const val ADS_EVERY_ELEMENTS = 15
+    }
+
 }
