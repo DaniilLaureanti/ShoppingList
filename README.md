@@ -1,38 +1,39 @@
 # ShoppingList
 
-This is a simple shopping list app built with Python and Tkinter. With this app, users can create, edit, and delete shopping lists.
+Это простое приложение для списка покупок, построенное на Kotlin и Android. С помощью этого приложения пользователи могут добавлять, редактировать и удалять предметы в списке покупок. 
 
-## Features
+## Download
 
-- Create and save multiple shopping lists
-- Add, edit, and delete items from a shopping list
-- Cross off items that have been purchased
-- Delete entire shopping lists
-- Save shopping lists to a file for future use
-- Load previously saved shopping lists
+[![N|Solid](https://camo.githubusercontent.com/68b69c9e16ee529bdd2540b7f7033afc8de0535966d2c36ee3878410f799f270/68747470733a2f2f706c61792e676f6f676c652e636f6d2f696e746c2f656e5f75732f6261646765732f696d616765732f67656e657269632f656e2d706c61792d62616467652e706e67 =200x)](https://play.google.com/store/apps/details?id=com.laureanti.shoppinglist.free)
 
-## Installation
+[![N|Solid](https://camo.githubusercontent.com/68b69c9e16ee529bdd2540b7f7033afc8de0535966d2c36ee3878410f799f270/68747470733a2f2f706c61792e676f6f676c652e636f6d2f696e746c2f656e5f75732f6261646765732f696d616765732f67656e657269632f656e2d706c61792d62616467652e706e67)](https://play.google.com/store/apps/details?id=com.laureanti.shoppinglist.free)
 
-1. Clone this repository using `git clone https://github.com/DaniilLaureanti/ShoppingList.git`
-2. Install the required packages using `pip install -r requirements.txt`
-3. Run the app using `python shopping_list.py`
+## Функциональность
 
-## Usage
+- Добавление, редактирование и удаление предметов в списке покупок
+- Отмечание купленных предметов
+- Просмотр списка покупок
 
-Upon opening the app, you will be presented with a list of your current shopping lists, if any.
+## Установка
 
-- To create a new shopping list, click the "New List" button and enter a name for your list.
-- To add an item to a list, select the list from the main menu, enter the item name in the input field, and click "Add".
-- To edit or delete an item, select the item from the list and click "Edit" or "Delete".
-- To cross off an item that has been purchased, select the item from the list and click "Cross Off".
-- To delete an entire list, select the list from the main menu and click "Delete List".
-- To save your shopping lists for future use, click "Save" from the main menu.
-- To load a previously saved shopping list, click "Load" from the main menu and select the file containing your saved lists.
+1. Скачайте архив с проектом или склонируйте репозиторий: `git clone https://github.com/имя_пользователя/название_репозитория.git`
+2. Откройте проект в Android Studio
+3. Запустите приложение на эмуляторе или на физическом устройстве
 
-## Contributing
+## Использование
 
-Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
+После запуска приложения вы увидите список предметов, которые уже находятся в вашем списке покупок. 
 
-## License
+- Для добавления нового предмета нажмите на кнопку "Добавить" и введите его название.
+- Для редактирования предмета нажмите на его название и отредактируйте его название.
+- Чтобы удалить предмет, проведите пальцем по нему влево или вправо и нажмите на иконку "Корзина".
+- Чтобы отметить купленный предмет, нажмите на его название.
+- Чтобы просмотреть список покупок, просто прокрутите экран вниз.
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+## Developer
+[Daniil Laureanti](https://www.laureanti.com/)
+[Instagram: @daniillaureanti](https://www.instagram.com/daniillaureanti/)
+
+## Лицензия
+
+Этот проект распространяется под лицензией MIT. Смотрите файл `LICENSE` для получения дополнительной информации.
