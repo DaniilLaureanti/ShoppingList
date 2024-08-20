@@ -4,11 +4,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.SmallTest
-import com.demo.shoppinglist.data.database.AppDataBase
-import com.demo.shoppinglist.data.database.ShopItemDbModel
-import com.demo.shoppinglist.data.database.ShopListDao
 import com.demo.shoppinglist.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
+import com.laureanti.shoppinglist.data.database.AppDataBase
+import com.laureanti.shoppinglist.data.database.ShopItemDbModel
+import com.laureanti.shoppinglist.data.database.ShopListDao
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.After

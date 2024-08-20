@@ -10,14 +10,13 @@ import java.util.concurrent.TimeoutException
    SPDX-License-Identifier: Apache-2.0 */
 
 fun <T> LiveData<T>.getOrAwaitValueTest(
-    time: Long = 2,
-    timeUnit: TimeUnit = TimeUnit.SECONDS
+    time: Long = 2,timeUnit: TimeUnit = TimeUnit.SECONDS
 ): T {
     var data: T? = null
     val latch = CountDownLatch(1)
-    val observer = object : Observer<T> {
-        override fun onChanged(o: T?) {
-            data = o
+    val observer = object : Observer<T> { // Correctly implement Observer interface
+        override fun onChanged(t: T) { // Implement the onChanged method
+            data = t
             latch.countDown()
             this@getOrAwaitValueTest.removeObserver(this)
         }

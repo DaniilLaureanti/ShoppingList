@@ -1,7 +1,7 @@
 package com.laureanti.shoppinglist.data.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import com.laureanti.shoppinglist.data.database.ShopListDao
 import com.laureanti.shoppinglist.data.mapper.ShopListMapper
 import com.laureanti.shoppinglist.domain.ListItem
@@ -31,14 +31,22 @@ class ShopListRepositoryImpl @Inject constructor(
         return mapper.mapDbModelToEntity(dbModel)
     }
 
-    override fun getShopList(): LiveData<List<ShopItem>> = Transformations
-        .map(shopListDao.getShopList()){
+//    override fun getShopList(): LiveData<List<ShopItem>> = Transformations
+//        .map(shopListDao.getShopList()){
+//        mapper.mapListDbModelToListEntity(it)
+//    }
+//
+//    override fun getShopListWidthAds(): LiveData<List<ListItem>> = Transformations
+//        .map(shopListDao.getShopList()){
+//            mapper.mapListDbModelToListEntityWidthAds(it)
+//        }
+
+    override fun getShopList(): LiveData<List<ShopItem>> = shopListDao.getShopList().map {
         mapper.mapListDbModelToListEntity(it)
     }
 
-    override fun getShopListWidthAds(): LiveData<List<ListItem>> = Transformations
-        .map(shopListDao.getShopList()){
-            mapper.mapListDbModelToListEntityWidthAds(it)
-        }
+    override fun getShopListWidthAds(): LiveData<List<ListItem>> = shopListDao.getShopList().map {
+        mapper.mapListDbModelToListEntityWidthAds(it)
+    }
 
 }
